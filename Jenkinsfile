@@ -1,23 +1,21 @@
 pipeline {
 agent any
+environment {
+dockerCreds = credentials('dockerhub_login')
+registry = "${dockerCreds_USR}/vatcal"
+registryCredentials = "dockerhub_login"
+dockerImage = "" // empty var, will be written to later
+}
 stages {
-stage('Checkout'){
-steps {
-git url: 'https://github.com/swarna-dev-tech/vat-calculator.git',
-branch: 'main'
-}
-}
-stage('Build') {
+stage('Run Tests') {
 steps {
 sh 'npm install'
-sh 'npm run build'
+sh 'CI=true npm test'
 }
 }
-stage('Archive') {
+stage('Build Image') {
 steps {
-sh 'tar -czf build.tar.gz build'
-archiveArtifacts 'build.tar.gz'
-}
-}
+script {
+dockerImage = docker.build(registry)
 }
 }
