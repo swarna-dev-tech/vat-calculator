@@ -20,6 +20,11 @@ dockerImage = docker.build(registry)
 }
 }
 }
+stage('Grype scan'){
+  steps {
+    grypeScan scanDest: "docker:${registry}:latest"
+  }
+}
 stage('Push Image') {
 steps {
 script {
