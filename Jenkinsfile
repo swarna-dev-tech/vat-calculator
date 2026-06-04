@@ -1,6 +1,7 @@
 pipeline {
 agent any
 environment {
+gcpCreds = 'gcp_credentials'  
 dockerCreds = credentials('dockerhub_login')
 registry = "${dockerCreds_USR}/vatcal"
 registryCredentials = "dockerhub_login"
