@@ -46,7 +46,7 @@ withCredentials([file(credentialsId: gcpCreds, variable:
 sh '''
 export GOOGLE_APPLICATION_CREDENTIALS=$GCP_CREDENTIALS
 terraform init
-terrascan scan -i terraform -t gcp -p . --non-recursive
+terrascan scan -i terraform -t gcp -p . --exclude node_modules
 terraform apply -auto-approve
 '''
 }
