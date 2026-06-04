@@ -41,7 +41,7 @@ resource "google_compute_firewall" "default" {
   name          = "server-firewall"
   network       = "default"
   direction     = "INGRESS"
-  source_ranges = ["34.78.198.57/0"]
+  source_ranges = ["34.70.0.0/0"]
   allow {
     protocol = "icmp"
   }
