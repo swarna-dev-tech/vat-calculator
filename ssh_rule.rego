@@ -1,6 +1,6 @@
 package accurics
 
-tcp_port_22_open contains api.id if {
+tcp_port_22_open[api.id] {
     api := input.google_compute_firewall[_]
 
     rule := api.config.allow[_]
