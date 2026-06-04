@@ -6,7 +6,7 @@ dockerCreds = credentials('dockerhub_login')
 registry = "${dockerCreds_USR}/vatcal"
 registryCredentials = "dockerhub_login"
 dockerImage = "" // empty var, will be written to later
-TF_VAR_gcp_project = "qwiklabs-gcp-02-dc1f29af59f3"
+TF_VAR_gcp_project = "qwiklabs-gcp-00-44af5de39590"
 TF_VAR_docker_registry = "${registry}"  
 }
 stages {
